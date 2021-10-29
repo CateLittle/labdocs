@@ -31,6 +31,17 @@ Key steps were:
 	- 'Camera settings' to modify lapse, intervals.
 	- seems to save to /var/www/html/media on pi
 
+2021.10.29
+## enable internet access on pi
+- cd /etc/network
+- ls
+- more interfaces
+- sudo nano interfaces
+#comment out all lines 
+#add this line
+- iface etho inet dhcp
+#save and exit nano 
+#reboot
 
 06.08.21
 ## testing presence of rtc (real time clock) on pi
@@ -42,7 +53,7 @@ Key steps were:
 
 -ntp synchronization:
 	`sudo service ntp stop`
-	`sudo ntpd -gq`
+	`sudo ntpd -g -q`
 	`sudo service ntp start`
 -rtc synchronization with ntp
 	`sudo hwclock -w`
@@ -63,6 +74,7 @@ Key steps were:
 - sudo apt install ntp
 - sudo apt install ntpdate
 - sudo timedatectl set-ntp true
+- sudo hwclock -w
 
 ###alternative method to set time zone
 - sudo timedatectl set-timezone US/Pacific-New
